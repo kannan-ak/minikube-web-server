@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7523a54b-ad9b-4e2a-8419-faf7ae21f9b6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/build-and-deploy.sh" beforeDir="false" afterPath="$PROJECT_DIR$/build-and-deploy.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/k8-manifests/deployment.yml" beforeDir="false" afterPath="$PROJECT_DIR$/k8-manifests/deployment.yml" afterDir="false" />
-    </list>
+    <list default="true" id="7523a54b-ad9b-4e2a-8419-faf7ae21f9b6" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
