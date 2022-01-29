@@ -4,7 +4,7 @@ FROM python:3.8-slim-buster
 
 WORKDIR /app
 
-COPY app.py test_app.py requirements.txt /app
+COPY app.py test_app.py requirements.txt /app/
 
 RUN pip3 install -r requirements.txt
 
