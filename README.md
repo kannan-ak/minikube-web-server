@@ -102,7 +102,7 @@ File: [build-and-deploy.sh](https://github.com/kannan-ak/minikube-web-server/blo
 
 ---
 
-### Common issues and troubleshooting steps
+### Common errors and troubleshooting steps
 
 1. Address not allocated to ingress and ingress creation fails
 > 🤦 StartHost failed, but will try again: creating host: create: Error creating machine: Error in driver during machine creation: IP address never found in dhcp leases file Temporary error: could not find an IP address for 86:24:9f:1e:ce:99
@@ -112,9 +112,29 @@ File: [build-and-deploy.sh](https://github.com/kannan-ak/minikube-web-server/blo
 **Fix**: Enable ingress using `minikube addons enable ingress` command
 
 
-2. Default backend:  default-http-backend:80 (<error: endpoints "default-http-backend" not found>)
 
-**Cause and fix**: Same as above. Enabling ingress solves both the errors.
+2. curl request to the url fails / ingress doesn't have IP address allocated 
+
+> + curl local.ecosia.org/tree
+> curl: (7) Failed to connect to local.ecosia.org port 80: Connection refused
+
+**Cause and fix**: 
+
+Check the ingress status
+
+```bash
+$ kubectl get ingress
+NAME             CLASS   HOSTS              ADDRESS     PORTS   AGE
+webapp-ingress   nginx   local.ecosia.org      			80      95s
+
+$ kubectl describe ingress webapp-ingress
+Default backend:  default-http-backend:80 (<error: endpoints "default-http-backend" not found>)
+
+```
+
+If the address field is empty, then the ingress is not working and most likely ingress addon is not enabled.
+So refer the pre-requisites field and ensure ingress addons are enabled.
+
 
 #
 
@@ -136,7 +156,7 @@ $ brew install hyperkit
 $ minikube start --driver=hyperkit
 ```
 
-4. Hostname in ingress rule not accessible, nslookup fails
+5. Hostname in ingress rule not accessible, nslookup fails
 ```
 nslookup local.ecosia.org $(minikube ip)
 >> ;; connection timed out; no servers could be reached
@@ -144,7 +164,7 @@ nslookup local.ecosia.org $(minikube ip)
 **Cause and fix**: Same as above point 3. This issue is specific to macos docker driver. Using hyperkit as a driver for minikube fixes this issue.
 
 #
-5. Requests are not routed to the ingress host's path
+6. Requests are not routed to the ingress host's path
 
 Ingress is working fine but requests to the local.ecosia.org/tree not returning expected response, throws 404 error.
 
