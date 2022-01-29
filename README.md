@@ -15,6 +15,18 @@ minikube-web-server is a web server written in Flask and deployed in minikube, e
 - Docker version >= 20.0.0
 - Minikube version >= 1.20 and in running status. Refer [Minikube installation](https://minikube.sigs.k8s.io/docs/start/)
 - Kubectl version >= 1.20
+- kubectl, minikube executables are available under the path /usr/local/bin/
+```bash
+# Absolute paths are used in the build-and-deploy.sh script
+
+$ which kubectl
+/usr/local/bin/kubectl
+$ which minikube
+/usr/local/bin/minikube
+$ which docker
+/usr/local/bin/docker
+
+```
 - Ingress addons enabled in minikube
 ```
 ➜  $ minikube addons enable ingress
