@@ -168,7 +168,7 @@ $ brew install hyperkit
 $ minikube start --driver=hyperkit
 ```
 
-5. Hostname in ingress rule not accessible, nslookup fails
+4. Hostname in ingress rule not accessible, nslookup fails
 ```
 nslookup local.ecosia.org $(minikube ip)
 >> ;; connection timed out; no servers could be reached
@@ -176,7 +176,7 @@ nslookup local.ecosia.org $(minikube ip)
 **Cause and fix**: Same as above point 3. This issue is specific to macos docker driver. Using hyperkit as a driver for minikube fixes this issue.
 
 #
-6. Requests are not routed to the ingress host's path
+5. Requests are not routed to the ingress host's path
 
 Ingress is working fine but requests to the local.ecosia.org/tree not returning expected response, throws 404 error.
 
