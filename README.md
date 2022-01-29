@@ -102,7 +102,7 @@ File: [build-and-deploy.sh](https://github.com/kannan-ak/minikube-web-server/blo
 
 ---
 
-### Common issues and troubleshooting
+### Common issues and troubleshooting steps
 
 1. Address not allocated to ingress and ingress creation fails
 > 🤦 StartHost failed, but will try again: creating host: create: Error creating machine: Error in driver during machine creation: IP address never found in dhcp leases file Temporary error: could not find an IP address for 86:24:9f:1e:ce:99
