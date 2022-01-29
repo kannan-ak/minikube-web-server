@@ -32,7 +32,7 @@ docker build -t webserver-image:v1 .
 echo "Docker image is built successfully!!!! 
 Loading docker image to Minikube"
 
-minikube image load webserver-image:v1
+/usr/local/bin/minikube image load webserver-image:v1
 
 }
 
@@ -41,7 +41,7 @@ k8s_deployment () {
 
 	echo "Creating $1"
 
-	kubectl apply -f k8-manifests/$1.yml
+	/usr/local/bin/kubectl apply -f k8-manifests/$1.yml
 
 	sleep 10s
 
@@ -51,7 +51,7 @@ k8s_deployment () {
 update_hosts () {
 	echo "Updating hosts file. This command requires ADMIN privileges."
 
-	echo -e "$(minikube ip)\t local.ecosia.org" | sudo tee -a /etc/hosts
+	echo -e "$(/usr/local/bin/minikube ip)\t local.ecosia.org" | sudo tee -a /etc/hosts
 }
 
 
@@ -80,7 +80,3 @@ main () {
 }
 
 main
-
-
-
-
