@@ -1,4 +1,15 @@
 #!/bin/bash
+## Usage: bash build-and-deploy.sh [or] ./build-and-deploy.sh
+## Arguments: NA
+## 
+## 
+## This script has 3 phases of execution
+## Phase 1: Creates docker build and loads the image into minikube
+## Phase 2: Creates a deploymentset, service and ingress in minikube
+## Phase 3: Update the /etc/hosts file with minikube ip mapping hostname given in ingress
+##          and curl the ingress url
+
+
 
 set -euxo pipefail
 
@@ -38,6 +49,7 @@ k8s_deployment () {
 
 
 update_hosts () {
+	echo "Updating hosts file. This command requires ADMIN privileges."
 
 	echo -e "$(minikube ip)\t local.ecosia.org" | sudo tee -a /etc/hosts
 }
@@ -58,6 +70,8 @@ main () {
 	echo "Deployments are completed. Sleep for a minute to ingress to come up"
 	sleep 60s
 
+
+	echo "##### Beginning Phase 3"
 	update_hosts
 
 	echo "Curl'ing Ingress endpoint"
