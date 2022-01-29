@@ -17,7 +17,7 @@ spec:
       securityContext:
         runAsUser: 1000
         runAsGroup: 3000
-        fsGroup: 2000      
+        fsGroup: 2000    
       containers:
       - name: webserver
         image: webserver-image:v1
@@ -32,3 +32,4 @@ spec:
             cpu: "1"
         securityContext:
           allowPrivilegeEscalation: false            
+          
