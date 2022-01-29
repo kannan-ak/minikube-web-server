@@ -12,4 +12,4 @@ def test_app():
     response = app.test_client().get('/tree')
 
     assert response.status_code == 200
-    assert response.data == b'{"myFavouriteTree": "Mango"}'
+    assert response.data == b'{"myFavouriteTree": "Avocado"}'
